@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom'
 const Signup = (props) => {
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
     let navigate=useNavigate();
+     const host = "https://notesphere-backend-y95p.onrender.com"
     const handleSubmit=async(e)=>{
       e.preventDefault();
       const {name,email,password}=credentials;
-        const response = await fetch("http://localhost:5000/api/auth/createuser", {
+        const response = await fetch(`${host}/api/auth/createuser`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
