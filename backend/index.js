@@ -10,7 +10,11 @@ connectToMongo().catch(err => {
   console.error("Connection failed at top level:", err.message);
 });
 
-app.use(cors())
+app.use(cors({
+  origin:"https://notesphere-frontend.onrender.com",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}))
 app.use(express.json());
 //available routes
 app.use('/api/auth',require('./routes/auth'))
